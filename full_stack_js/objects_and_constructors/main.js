@@ -11,6 +11,19 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+const readStatus = function (e) {
+  const bookIndex = e.target.parentElement.parentElement.dataset.index;
+  console.log(bookIndex);
+
+  if (myLibrary[bookIndex].read === 'Read') {
+    myLibrary[bookIndex].read = 'Unread';
+  } else {
+    myLibrary[bookIndex].read = 'Read';
+  }
+
+  renderLibrary(myLibrary);
+};
+
 function addBookToLibrary() {
   const bookTitleValue = form.title.value;
   const bookAuthorValue = form.author.value;
@@ -31,21 +44,10 @@ function addBookToLibrary() {
 }
 
 const renderLibrary = myLibrary => {
-  // let index = myLibrary.length - 1;
-  // let book = myLibrary[index];
-
-  // let div = document.createElement('div');
-  // div.setAttribute('data-index', index);
-  // div.classList.add('card');
-
-  // div.innerHTML = `
-  // <h2>${book.title}</h2>
-  // <p>Author: ${book.author}</p>
-  // <p>Page Count: ${book.pages}</p>
-  // <p>Book read? ${book.read}</p>
-  // <button class="btn btn--remove" data-type="removeBtn">Remove book</button>
-  // `;
-  // document.body.append(div);
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.remove();
+  });
 
   myLibrary.forEach((book, index) => {
     let div = document.createElement('div');
@@ -56,7 +58,7 @@ const renderLibrary = myLibrary => {
     <h2>${book.title}</h2>
     <p>Author: ${book.author}</p>
     <p>Page Count: ${book.pages}</p>
-    <p>Book read? ${book.read}</p>
+    <p>Status: <button class="btn statusBtn">${book.read}</button></p>
     <button class="btn btn--remove" data-type="removeBtn">Remove book</button>
     `;
     document.body.append(div);
@@ -77,6 +79,13 @@ document.addEventListener('click', e => {
     const parentDiv = e.target.parentElement;
     const parentIndex = parentDiv.dataset.index;
     myLibrary.splice(parentIndex, 1);
+    parentDiv.remove();
+    console.log(myLibrary);
     renderLibrary(myLibrary);
+  }
+
+  if (e.target.classList.contains('statusBtn')) {
+    console.log('clicked status button');
+    readStatus(e);
   }
 });
