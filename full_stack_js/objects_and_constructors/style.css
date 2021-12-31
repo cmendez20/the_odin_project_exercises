@@ -21,7 +21,7 @@ body {
   font-size: 1.6rem;
 }
 
-.library {
+.container {
   max-width: 325px;
   margin: auto;
 }
@@ -42,19 +42,42 @@ body {
 
 .btn {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 16px 32px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  transition: ease-out 0.2s background;
+}
+
+.btn--add-book {
   font-size: 18px;
+}
+
+.btn--cancel {
+  width: 150px;
+  display: block;
+  background: red;
+  outline: 2px solid azure;
+  color: azure;
+  margin-inline: auto;
+  max-height: 48px;
+}
+
+.btn--cancel:hover {
+  background: rgb(167, 0, 0);
+}
+
+.d-none {
+  display: none;
 }
 
 .form {
   background-color: var(--color-accent);
-  /* width: 300px; */
   padding: 3rem;
+  padding-bottom: 0.5rem;
   border-radius: 12px;
   color: #fcf5c7;
+  margin-bottom: 1.5rem;
 }
 
 .form input[type='text'] {
@@ -110,9 +133,11 @@ body {
   border-radius: 4px;
   border: none;
   width: 100%;
+  margin-bottom: 18px;
 }
 
 .footer {
-  padding: 5rem;
+  /* position: absolute; */
+  padding: 3rem 0;
   text-align: center;
 }

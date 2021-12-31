@@ -8,23 +8,23 @@
     <title>Library</title>
   </head>
   <body>
-    <main class="library">
+    <main class="container">
       <h1 class="hero-text">The Book Library</h1>
       <div class="add-book-div">
         <button class="btn btn--add-book">New Book</button>
       </div>
-      <form class="form" name="form">
+      <form class="form d-none" name="form">
         <div class="form-group">
           <label for="title">Book Title</label>
-          <input type="text" name="title" placeholder="Title..." />
+          <input type="text" name="title" placeholder="Title..." required />
         </div>
         <div class="form-group">
           <label for="author">Book Author</label>
-          <input type="text" name="author" placeholder="Author..." />
+          <input type="text" name="author" placeholder="Author..." required />
         </div>
         <div class="form-group">
           <label for="page-count">Number of Pages:</label>
-          <input type="number" name="pageCount" />
+          <input type="number" name="pageCount" required />
         </div>
         <div class="form-group form-group--read">
           <label for="read">Have you read it?</label>
@@ -33,7 +33,7 @@
             <label for="read">Read</label>
           </div>
           <div>
-            <input type="radio" name="read" value="Unread" />
+            <input type="radio" name="read" value="Unread" required />
             <label for="read">Not read</label>
           </div>
         </div>
@@ -41,6 +41,9 @@
           <input type="submit" value="Add book" class="submit-btn" />
         </div>
       </form>
+      <button class="btn btn--cancel d-none">Cancel</button>
+
+      <section class="library"></section>
     </main>
 
     <footer class="footer">

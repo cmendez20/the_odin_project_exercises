@@ -1,8 +1,17 @@
-const submitButton = document.querySelector('#btnsubmit');
+const addBookButton = document.querySelector('.btn--add-book');
+const submitButton = document.querySelector('.btnsubmit');
+const cancelButton = document.querySelector('.btn--cancel');
 const form = document.querySelector('.form');
 const card = document.querySelector('.card');
+const library = document.querySelector('.library');
 
 const myLibrary = [];
+
+const toggleShow = function () {
+  form.classList.toggle('d-none');
+  addBookButton.classList.toggle('d-none');
+  cancelButton.classList.toggle('d-none');
+};
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -61,7 +70,7 @@ const renderLibrary = myLibrary => {
     <p>Status: <button class="btn statusBtn">${book.read}</button></p>
     <button class="btn btn--remove" data-type="removeBtn">Remove book</button>
     `;
-    document.body.append(div);
+    library.append(div);
   });
 };
 
@@ -71,10 +80,19 @@ const clearInput = function () {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+  toggleShow();
   addBookToLibrary();
 });
 
 document.addEventListener('click', e => {
+  if (e.target === addBookButton) {
+    toggleShow();
+  }
+
+  if (e.target === cancelButton) {
+    toggleShow();
+  }
+
   if (e.target.dataset.type === 'removeBtn') {
     const parentDiv = e.target.parentElement;
     const parentIndex = parentDiv.dataset.index;
