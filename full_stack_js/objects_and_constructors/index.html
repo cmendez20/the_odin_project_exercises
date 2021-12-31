@@ -4,27 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Library</title>
   </head>
   <body>
     <main class="library">
-      <button class="btn">New Book</button>
+      <h1 class="hero-text">The Book Library</h1>
+      <div class="add-book-div">
+        <button class="btn btn--add-book">New Book</button>
+      </div>
       <form class="form" name="form">
-        <label for="title">Book Title</label>
-        <input type="text" name="title" />
-        <label for="author">Book Author</label>
-        <input type="text" name="author" />
-        <label for="page-count">Number of Pages</label>
-        <input type="number" name="pageCount" />
-        <label for="read">Have you read it?</label>
-        <input type="radio" name="read" value="Read" />
-        <label for="read">Read</label>
-        <input type="radio" name="read" value="Unread" />
-        <label for="read">Not read</label>
-        <input type="submit" value="Add book" class="submit-btn" />
+        <div class="form-group">
+          <label for="title">Book Title</label>
+          <input type="text" name="title" placeholder="Title..." />
+        </div>
+        <div class="form-group">
+          <label for="author">Book Author</label>
+          <input type="text" name="author" placeholder="Author..." />
+        </div>
+        <div class="form-group">
+          <label for="page-count">Number of Pages:</label>
+          <input type="number" name="pageCount" />
+        </div>
+        <div class="form-group form-group--read">
+          <label for="read">Have you read it?</label>
+          <div>
+            <input type="radio" name="read" value="Read" />
+            <label for="read">Read</label>
+          </div>
+          <div>
+            <input type="radio" name="read" value="Unread" />
+            <label for="read">Not read</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Add book" class="submit-btn" />
+        </div>
       </form>
     </main>
 
+    <footer class="footer">
+      Created by <a target="_blank" href="https://cjmendez.com">Chris Mendez</a>
+    </footer>
     <script src="./main.js"></script>
   </body>
 </html>
