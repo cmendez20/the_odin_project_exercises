@@ -21,7 +21,7 @@ function Book(title, author, pages, read) {
 }
 
 const readStatus = function (e) {
-  const bookIndex = e.target.parentElement.parentElement.dataset.index;
+  const bookIndex = e.target.parentElement.dataset.index;
   console.log(bookIndex);
 
   if (myLibrary[bookIndex].read === 'Read') {
@@ -64,11 +64,11 @@ const renderLibrary = myLibrary => {
     div.classList.add('card');
 
     div.innerHTML = `
-    <h2>${book.title}</h2>
-    <p>Author: ${book.author}</p>
-    <p>Page Count: ${book.pages}</p>
-    <p>Status: <button class="btn statusBtn">${book.read}</button></p>
-    <button class="btn btn--remove" data-type="removeBtn">Remove book</button>
+    <h2 class='card-title'>${book.title}</h2>
+    <p>by ${book.author}</p>
+    <p class='card-pages'>${book.pages} Pages</p>
+    <button class="statusBtn">${book.read}</button>
+    <button class="btn--remove" data-type="removeBtn">Remove book</button>
     `;
     library.append(div);
   });
